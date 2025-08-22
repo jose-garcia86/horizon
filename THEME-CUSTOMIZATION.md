@@ -2,7 +2,15 @@
 
 ## Overview
 
-The Horizon theme now includes a comprehensive color system and configurable styles that can be easily customized without modifying the core CSS files.
+The Horizon theme now includes a comprehensive, fully configurable color system that replaces all hardcoded colors throughout the theme templates. All HTML templates have been updated to use consistent theme color classes, making the entire theme easily customizable without modifying any core files.
+
+## What's New
+
+✅ **All hardcoded colors removed** - No more `#171717` or `text-gray-*` classes in templates  
+✅ **Consistent color system** - All templates use the same configurable color variables  
+✅ **Enhanced component classes** - New button and link components with hover effects  
+✅ **Semantic color naming** - `text-theme-primary`, `bg-theme-surface`, etc.  
+✅ **Easy customization** - Change the entire theme appearance by modifying CSS variables
 
 ## Color System
 

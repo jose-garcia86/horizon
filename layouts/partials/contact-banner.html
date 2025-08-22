@@ -1,17 +1,17 @@
-<section class="w-full bg-[#F7F7F6] px-4 py-8 antialiased  md:py-16">
+<section class="w-full bg-theme-surface px-4 py-8 antialiased  md:py-16">
     <div class="mx-auto max-w-screen-xl rounded-lg py-4 md:py-8 text-left">
-            <h2 class="mb-3 text-4xl font-bold leading-tight tracking-tight text-gray-900 "> {{ T "contact"}}</h2>
-            <p class="text-lg max-w-md mb-6 text-gray-500">{{ T "contact_us_if_interested"}}</p>
+            <h2 class="mb-3 text-4xl font-bold leading-tight tracking-tight text-theme-primary "> {{ T "contact"}}</h2>
+            <p class="text-lg max-w-md mb-6 text-theme-secondary">{{ T "contact_us_if_interested"}}</p>
              <div class="flex flex-row max-w-xs mt-4 md:mt-0">
                 {{ with .Site.Params.author }}
-                <a href="mailto:{{ .email }}" class=" text-[#171717] hover:text-gray-700 mx-2">
+                <a href="mailto:{{ .email }}" class=" text-theme-primary hover:text-theme-secondary mx-2">
                     <svg class="w-5 h-5  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
                     </svg>
                 {{ end }}
                 </a>
                 {{ range site.Data.social.main }}
-                <a  class=" text-[#171717] hover:text-gray-700 mx-2"
+                <a  class=" text-theme-primary hover:text-theme-secondary mx-2"
                     target="_blank"
                     aria-label="{{ .name }}"
                     rel="nofollow noopener"

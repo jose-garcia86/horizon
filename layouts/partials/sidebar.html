@@ -1,11 +1,11 @@
 {{ $taxonomyObject := .Site.Taxonomies.categories }}
 
-<section class="bg-white px-4 py-16 antialiased md:py-12 sticky top-0 z-10">
+<section class="bg-theme-background px-4 py-16 antialiased md:py-12 sticky top-0 z-10">
     <div class="flex items-center">
         {{ with .Site.GetPage "/about" }}
-        <h2 class="mb-1 w-40 text-sm uppercase tracking-tight font-normal text-gray-800"> {{ .Title }}</h2>
+        <h2 class="mb-1 w-40 text-sm uppercase tracking-tight font-normal text-theme-secondary"> {{ .Title }}</h2>
         {{ end }}
-        <div class="ml-6 block w-full  border-y border-gray-100"></div>
+        <div class="ml-6 block w-full  border-y border-theme-primary"></div>
     </div>  
     <!-- Logo and Title -->
         <div class="flex items-start space-x-4 mt-6 mb-12">
@@ -13,7 +13,7 @@
             <div class="flex-shrink-0">
                 
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ relLangURL "" }} " class="text-2xl font-bold text-[#171717] hover:text-gray-700 transition-colors duration-300">
+                    <a href="{{ relLangURL "" }} " class="text-2xl font-bold text-theme-primary hover:text-theme-secondary transition-colors duration-300">
                         {{ with .Site.Params.author }}
                             {{ if .displayImage | default true }}
                                 <img class="mr-4 w-12 h-12 rounded-full" src="{{ .image | relURL }}" alt="{{ .name | markdownify}}">
@@ -26,16 +26,16 @@
             
             <!-- Title and Tagline -->
             <div>
-                <h2 class="text-xl font-bold text-gray-900">{{ .Site.Params.author.name | markdownify}}</h2>
-                <p class="text-base text-gray-500">{{ .Site.Params.author.role | markdownify}}</p>
+                <h2 class="text-xl font-bold text-theme-primary">{{ .Site.Params.author.name | markdownify}}</h2>
+                <p class="text-base text-theme-muted">{{ .Site.Params.author.role | markdownify}}</p>
             </div>
         </div>
     
     <div class="flex items-center">
         {{ with .Site.GetPage "/posts" }}
-        <h2 class="mb-1 w-40 text-sm uppercase tracking-tight font-normal text-gray-800"> Featured </h2>
+        <h2 class="mb-1 w-40 text-sm uppercase tracking-tight font-normal text-theme-secondary"> Featured </h2>
         {{ end }}
-        <div class="ml-6 block w-full  border-y border-gray-100"></div>
+        <div class="ml-6 block w-full  border-y border-theme-primary"></div>
     </div>    
     <div>
         <!-- Featured Articles -->
@@ -44,20 +44,20 @@
                 {{ if .Params.featured }}
                 <!-- Featured Article -->
                 <div class="mt-6 cursor-pointer">
-                    <h3 class="text-xl font-bold text-[#171717] mb-2 hover:text-gray-700 transition-colors">
+                    <h3 class="text-xl font-bold text-theme-primary mb-2 hover:text-theme-secondary transition-colors">
                         <a href="{{ .RelPermalink }}">
                             {{ .Title }}
                         </a>
                     </h3>
-                    <p class="text-sm text-gray-600 mb-3 leading-relaxed">
+                    <p class="text-sm text-theme-secondary mb-3 leading-relaxed">
                         {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
                     </p>
-                    <div class="flex items-center text-xs text-gray-500">
+                    <div class="flex items-center text-xs text-theme-muted">
                         <time datetime="{{ .Date.Format "2006-01-02" }}" class="uppercase">
                             {{ .Date.Format "Jan 2, 2006" }}
                         </time>
                         <span class="mx-2">·</span>
-                        <span class="text-gray-400">{{ .ReadingTime }} MIN READ</span>
+                        <span class="text-theme-muted">{{ .ReadingTime }} MIN READ</span>
                     </div>
                 </div>
                 {{ end }}
@@ -67,15 +67,15 @@
 
     <div class="flex items-center mb-4">
         {{ with .Site.GetPage "/posts" }}
-        <h2 class="mb-1 w-40 text-sm uppercase tracking-tight font-normal text-gray-800"> Topics </h2>
+        <h2 class="mb-1 w-40 text-sm uppercase tracking-tight font-normal text-theme-secondary"> Topics </h2>
         {{ end }}
-        <div class="ml-6 block w-full  border-y border-gray-100"></div>
+        <div class="ml-6 block w-full  border-y border-theme-primary"></div>
     </div>
     <div class="flex flex-col justify-between">
         {{ range $term, $weightedPages := $taxonomyObject }}
         <div class="flex items-center justify-between mb-2">
-            <a href="{{ .Page.RelPermalink }}" class="text-lg font-semibold text-[#171717]">{{ .Page.LinkTitle }}</a>
-            <span class="text-xs text-gray-600 border border-gray-200 px-6 py-1 rounded-full">{{ $taxonomyObject.Count $term }} </span>
+            <a href="{{ .Page.RelPermalink }}" class="text-lg font-semibold text-theme-primary">{{ .Page.LinkTitle }}</a>
+            <span class="text-xs text-theme-secondary border border-theme-primary px-6 py-1 rounded-full">{{ $taxonomyObject.Count $term }} </span>
         </div>
         {{ end }}
     </div>

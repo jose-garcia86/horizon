@@ -5,8 +5,8 @@ banner:
   content: "Ofrezco experiencia especializada en la creación de identidades de marca distintivas, diseños de productos innovadores y estrategias de marketing orientadas a resultados, adaptadas a empresas emergentes."
   button:
     enable: true
-    label: "Trabajemos juntos"
-    link: "/contact"
+    label: "Más sobre mi"
+    link: "/about"
 
 # Work Experience
 experience:

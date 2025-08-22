@@ -4,13 +4,13 @@
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-<nav class="{{ if eq $menuID "main" . }} bg-white shadow-lg fixed w-full top-0 z-40 {{ end }} relative md:border-y md:border-gray-50">
+<nav class="{{ if eq $menuID "main" . }} bg-theme-background shadow-lg fixed w-full top-0 z-40 {{ end }} relative">
   <div class="{{ if eq $menuID "main" . }} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 {{ else }} justify-center {{ end }}">
     
     <!-- Logo -->
     {{ if eq $menuID "main" . }}
     <div class="flex-shrink-0 flex items-center">
-      <a href="{{ relLangURL "" }} " class="text-2xl font-bold text-[#171717] hover:text-gray-700 transition-colors duration-300">
+      <a href="{{ relLangURL "" }} " class="text-2xl font-bold text-theme-primary hover:text-theme-secondary transition-colors duration-300">
         {{ with $site.Params.navbar }}
           {{ if .displayLogo | default true }}
             <img src="{{ .logoUrl | relURL }}" class="h-8" alt="{{ $site.Title }}" />
@@ -25,7 +25,7 @@
     <!-- Mobile Menu Button -->
     {{ if eq $menuID "main" . }}
     <div class="md:hidden">
-        <button id="mobile-menu-btn" class="text-[#171717] hover:text-gray-600 focus:outline-none relative w-6 h-6 cursor-pointer">
+        <button id="mobile-menu-btn" class="text-theme-primary hover:text-theme-secondary focus:outline-none relative w-6 h-6 cursor-pointer">
             <span class="hamburger-line absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 top-1"></span>
             <span class="hamburger-line absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 top-3"></span>
             <span class="hamburger-line absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 top-5"></span>
@@ -55,13 +55,13 @@
 </nav>
 
 <!-- Mobile Sidebar -->
-<div id="mobile-sidebar" class="fixed inset-y-0 right-0 w-72 bg-white shadow-2xl z-50 md:hidden" style="transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+<div id="mobile-sidebar" class="fixed inset-y-0 right-0 w-72 bg-theme-background shadow-2xl z-50 md:hidden" style="transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
   <!-- Header with Logo and Close Button -->
-  <div class="flex items-center justify-between p-4 border-b border-gray-200">
+  <div class="flex items-center justify-between p-4 border-b border-theme-primary">
     <!-- Logo -->
     {{ if eq $menuID "main" . }}
     <div class="flex-shrink-0 flex items-center">
-      <a href="{{ relLangURL "" }} " class="text-2xl font-bold text-[#171717] hover:text-gray-700 transition-colors duration-300">
+      <a href="{{ relLangURL "" }} " class="text-2xl font-bold text-theme-primary hover:text-theme-secondary transition-colors duration-300">
         {{ with $site.Params.navbar }}
         {{ if .displayLogo | default true }}
         <img src="{{ .logoUrl | relURL }}" class="h-8" alt="{{ $site.Title }}" />
@@ -73,7 +73,7 @@
     </div>
     {{ end }}
     <!-- Close Button -->
-    <button id="close-sidebar" class="text-gray-500 hover:text-[#171717] transition-colors duration-200 p-2 cursor-pointer">
+    <button id="close-sidebar" class="text-theme-muted hover:text-theme-primary transition-colors duration-200 p-2 cursor-pointer">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
@@ -108,18 +108,18 @@
 
     {{ if .HasChildren}}
     <li class="relative dropdown-container">
-      <button id="dropdown-btn" class="nav-link dropdown-trigger py-1 text-[#171717] hover:text-gray-600 transition-colors duration-300 flex items-center cursor-pointer">
+      <button id="dropdown-btn" class="nav-link dropdown-trigger py-1 text-theme-primary hover:text-theme-secondary transition-colors duration-300 flex items-center cursor-pointer">
           {{ .Name }}
         <svg class="w-3 h-3 me-2 ml-2 text-xs dropdown-arrow transition-transform duration-300 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
         </svg>
       </button>
-        <ul class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible transform -translate-y-2 transition-all duration-300">
+        <ul class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-theme-background rounded-lg shadow-xl opacity-0 invisible transform -translate-y-2 transition-all duration-300">
           {{ range .Children }}
             {{ $childURL := .URL | absLangURL }}
             {{ $active := eq $childURL $pageURL }}
             <li>
-              <a class="block px-4 py-3 text-[#171717] hover:bg-gray-50 transition-colors duration-200 {{ if $active }} active {{- end -}}"
+              <a class="block px-4 py-3 text-theme-primary hover:bg-theme-surface transition-colors duration-200 {{ if $active }} active {{- end -}}"
                 {{ if findRE `^http` .URL }}
                   target="_blank" rel="noopener"
                 {{ end }}
@@ -139,8 +139,8 @@
     </li>
     {{ else }}
     <li>
-      <div class="nav-link text-[#171717] hover:text-gray-600 transition-colors duration-300">
-        <a class="block px-4 py-1 text-[#171717] transition-colors duration-200 {{ if $active }}active{{- end -}}"
+      <div class="nav-link text-theme-primary hover:text-theme-secondary transition-colors duration-300">
+        <a class="block px-4 py-1 text-theme-primary transition-colors duration-200 {{ if $active }}active{{- end -}}"
           {{ if findRE `^http` .URL }}
             target="_blank" rel="noopener"
           {{ end }}
@@ -169,7 +169,7 @@
 
     {{ if .HasChildren}}
     <li class="list-none mobile-dropdown mobile-menu-item">
-      <button id="dropdown-btn" class="mobile-dropdown-trigger w-full text-left py-2 text-[#171717] hover:text-gray-600 transition-colors duration-300 flex items-center justify-between cursor-pointer">
+      <button id="dropdown-btn" class="mobile-dropdown-trigger w-full text-left py-2 text-theme-primary hover:text-theme-secondary transition-colors duration-300 flex items-center justify-between cursor-pointer">
           {{ .Name }}
         <svg class="w-3 h-3 me-2 ml-2 text-xs mobile-arrow transition-transform duration-300 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
@@ -180,7 +180,7 @@
             {{ $childURL := .URL | absLangURL }}
             {{ $active := eq $childURL $pageURL }}
             <li class="list-none">
-              <a class="block py-1 text-sm text-gray-600 hover:text-[#171717] transition-colors duration-200 {{ if $active }} active {{- end -}}"
+              <a class="block py-1 text-sm text-theme-secondary hover:text-theme-primary transition-colors duration-200 {{ if $active }} active {{- end -}}"
                 {{ if findRE `^http` .URL }}
                   target="_blank" rel="noopener"
                 {{ end }}
@@ -200,8 +200,8 @@
     </li>
     {{ else }}
     <li class="list-none">
-      <div class="nav-link text-[#171717] hover:text-gray-600 transition-colors duration-300">
-        <a class="mobile-menu-item block py-2 text-[#171717] hover:text-gray-600 transition-colors duration-300 {{ if $active }}active{{- end -}}"
+      <div class="nav-link text-theme-primary hover:text-theme-secondary transition-colors duration-300">
+        <a class="mobile-menu-item block py-2 text-theme-primary hover:text-theme-secondary transition-colors duration-300 {{ if $active }}active{{- end -}}"
           {{ if findRE `^http` .URL }}
             target="_blank" rel="noopener"
           {{ end }}
@@ -226,7 +226,7 @@
 {{- $page := .page }}
 {{- $menuID := .menuID }}
 <div class="relative dropdown-container">
-  <button type="button" class="text-gray-500 hover:text-[#171717] transition-colors duration-300 flex items-center cursor-pointer" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="text-theme-muted hover:text-theme-primary transition-colors duration-300 flex items-center cursor-pointer" aria-haspopup="true" aria-expanded="false">
     <svg class="w-4 h-4 me-2 ml-2 text-md  duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
       <path d="M415.9 344L225 344C227.9 408.5 242.2 467.9 262.5 511.4C273.9 535.9 286.2 553.2 297.6 563.8C308.8 574.3 316.5 576 320.5 576C324.5 576 332.2 574.3 343.4 563.8C354.8 553.2 367.1 535.8 378.5 511.4C398.8 467.9 413.1 408.5 416 344zM224.9 296L415.8 296C413 231.5 398.7 172.1 378.4 128.6C367 104.2 354.7 86.8 343.3 76.2C332.1 65.7 324.4 64 320.4 64C316.4 64 308.7 65.7 297.5 76.2C286.1 86.8 273.8 104.2 262.4 128.6C242.1 172.1 227.8 231.5 224.9 296zM176.9 296C180.4 210.4 202.5 130.9 234.8 78.7C142.7 111.3 74.9 195.2 65.5 296L176.9 296zM65.5 344C74.9 444.8 142.7 528.7 234.8 561.3C202.5 509.1 180.4 429.6 176.9 344L65.5 344zM463.9 344C460.4 429.6 438.3 509.1 406 561.3C498.1 528.6 565.9 444.8 575.3 344L463.9 344zM575.3 296C565.9 195.2 498.1 111.3 406 78.7C438.3 130.9 460.4 210.4 463.9 296L575.3 296z"/>
     </svg>
@@ -235,10 +235,10 @@
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
     </svg>
   </button>
-  <ul class="dropdown-menu absolute top-full right-0 mt-4 w-32 bg-white rounded-lg shadow-xl opacity-0 invisible transform -translate-y-2 transition-all duration-300">
+  <ul class="dropdown-menu absolute top-full right-0 mt-4 w-32 bg-theme-background rounded-lg shadow-xl opacity-0 invisible transform -translate-y-2 transition-all duration-300">
     {{ range $site.Home.AllTranslations }}
       <div>
-        <a class="block px-4 py-2 text-md text-[#171717] hover:bg-gray-50 transition-colors duration-200" href="{{ .RelPermalink }}">
+        <a class="block px-4 py-2 text-md text-theme-primary hover:bg-theme-surface transition-colors duration-200" href="{{ .RelPermalink }}">
           {{ .Language.LanguageName }}
         </a>
       </div>        
@@ -253,7 +253,7 @@
 {{- $page := .page }}
 {{- $menuID := .menuID }}
 <div class="mobile-dropdown mobile-menu-itemr">
-  <button type="button" class="mobile-dropdown-trigger w-full text-left py-2 text-[#171717] hover:text-gray-600 transition-colors duration-300 flex items-center justify-between cursor-pointer">
+  <button type="button" class="mobile-dropdown-trigger w-full text-left py-2 text-theme-primary hover:text-theme-secondary transition-colors duration-300 flex items-center justify-between cursor-pointer">
     <span class="flex items-center">
       <svg class="w-4 h-4 me-2 ml-2 text-md  duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
         <path d="M415.9 344L225 344C227.9 408.5 242.2 467.9 262.5 511.4C273.9 535.9 286.2 553.2 297.6 563.8C308.8 574.3 316.5 576 320.5 576C324.5 576 332.2 574.3 343.4 563.8C354.8 553.2 367.1 535.8 378.5 511.4C398.8 467.9 413.1 408.5 416 344zM224.9 296L415.8 296C413 231.5 398.7 172.1 378.4 128.6C367 104.2 354.7 86.8 343.3 76.2C332.1 65.7 324.4 64 320.4 64C316.4 64 308.7 65.7 297.5 76.2C286.1 86.8 273.8 104.2 262.4 128.6C242.1 172.1 227.8 231.5 224.9 296zM176.9 296C180.4 210.4 202.5 130.9 234.8 78.7C142.7 111.3 74.9 195.2 65.5 296L176.9 296zM65.5 344C74.9 444.8 142.7 528.7 234.8 561.3C202.5 509.1 180.4 429.6 176.9 344L65.5 344zM463.9 344C460.4 429.6 438.3 509.1 406 561.3C498.1 528.6 565.9 444.8 575.3 344L463.9 344zM575.3 296C565.9 195.2 498.1 111.3 406 78.7C438.3 130.9 460.4 210.4 463.9 296L575.3 296z"/>
@@ -267,22 +267,22 @@
   <ul class="mobile-dropdown-content ml-4 space-y-2">
     {{ range $site.Home.AllTranslations }}
       <div>
-        <a class="block py-1 text-sm text-gray-600 hover:text-[#171717] transition-colors duration-200" href="{{ .RelPermalink }}">
+        <a class="block py-1 text-sm text-theme-secondary hover:text-theme-primary transition-colors duration-200" href="{{ .RelPermalink }}">
           {{ .Language.LanguageName }}
         </a>
       </div>        
     {{ end }}
   </ul>
-  <div class="<mobile-menu-item flex items-center justify-center space-x-4 mt-6 pt-6 border-t border-gray-200">
+  <div class="<mobile-menu-item flex items-center justify-center space-x-4 mt-6 pt-6 border-t border-theme-primary">
       {{ with .Site.Params.author }}
-      <a href="mailto:{{ .email }}" class="text-gray-500 hover:text-[#171717] transition-colors duration-300">
+      <a href="mailto:{{ .email }}" class="text-theme-muted hover:text-theme-primary transition-colors duration-300">
           <svg class="w-5 h-5  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
           </svg>
       {{ end }}
       </a>
       {{ range site.Data.social.main }}
-      <a  class=" text-gray-500 hover:text-[#171717] transition-colors duration-300"
+      <a  class=" text-theme-muted hover:text-theme-primary transition-colors duration-300"
           target="_blank"
           aria-label="{{ .name }}"
           rel="nofollow noopener"
