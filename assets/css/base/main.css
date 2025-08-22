@@ -1,37 +1,322 @@
 /* Tailwind CSS */
 @import "tailwindcss";
 
+/* =========================================
+   HORIZON THEME - CONFIGURABLE VARIABLES
+   ========================================= */
+
+:root {
+  /* ============ COLOR SYSTEM ============ */
+
+  /* Theme Semantic Colors */
+  --color-background: #ffffff;
+  --color-surface: #f7f7f6;
+  --color-text-primary: #171717;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6b7280;
+  --color-text-inverse: #ffffff;
+  --color-border-primary: #e5e7eb;
+  --color-border-secondary: #d1d5db;
+  
+  /* Primary Colors - Main brand colors */
+  --color-primary-50: #f8fafc;
+  --color-primary-100: #f1f5f9;
+  --color-primary-200: #e2e8f0;
+  --color-primary-300: #cbd5e1;
+  --color-primary-400: #94a3b8;
+  --color-primary-500: #64748b;
+  --color-primary-600: #475569;
+  --color-primary-700: #334155;
+  --color-primary-800: #1e293b;
+  --color-primary-900: #0f172a;
+  --color-primary-950: #020617;
+  
+  /* Secondary Colors - Supporting colors */
+  --color-secondary-50: #f9fafb;
+  --color-secondary-100: #f3f4f6;
+  --color-secondary-200: #e5e7eb;
+  --color-secondary-300: #d1d5db;
+  --color-secondary-400: #9ca3af;
+  --color-secondary-500: #6b7280;
+  --color-secondary-600: #4b5563;
+  --color-secondary-700: #374151;
+  --color-secondary-800: #1f2937;
+  --color-secondary-900: #111827;
+  --color-secondary-950: #030712;
+  
+  /* Accent Colors - Call-to-action and highlights */
+  --color-accent-50: #eff6ff;
+  --color-accent-100: #dbeafe;
+  --color-accent-200: #bfdbfe;
+  --color-accent-300: #93c5fd;
+  --color-accent-400: #60a5fa;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e40af;
+  --color-accent-900: #1e3a8a;
+  --color-accent-950: #172554;
+  
+  
+  /* ============ TYPOGRAPHY ============ */
+  
+  /* Font Families */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  
+  /* Line Heights */
+  --leading-xs: 1rem;
+  --leading-sm: 1.25rem;
+  --leading-base: 1.5rem;
+  --leading-lg: 1.75rem;
+  --leading-xl: 1.75rem;
+  --leading-2xl: 2rem;
+  --leading-3xl: 2.25rem;
+  --leading-4xl: 2.5rem;
+  --leading-5xl: 1;
+  --leading-6xl: 1;
+  --leading-7xl: 1;
+  
+  /* ============ SPACING ============ */
+  
+  --spacing-section: 4rem;
+  --spacing-container: 2rem;
+  
+  /* ============ BORDERS & SHADOWS ============ */
+  
+  --border-radius: 0.5rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-lg: 0.75rem;
+  
+  --shadow-theme: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-theme-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-theme-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* ============ COMPONENT COLORS ============ */
+  
+  /* Navigation */
+  --nav-background: var(--color-background);
+  --nav-text: var(--color-text-primary);
+  --nav-text-hover: var(--color-text-secondary);
+  --nav-border: var(--color-border-primary);
+  
+  /* Buttons */
+  --button-primary-bg: var(--color-text-primary);
+  --button-primary-text: var(--color-text-inverse);
+  --button-primary-hover: var(--color-secondary-800);
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-text-primary);
+  --button-secondary-border: var(--color-border-primary);
+  --button-secondary-hover: var(--color-surface);
+  
+  /* Links */
+  --link-color: var(--color-text-primary);
+  --link-hover: var(--color-text-secondary);
+  --link-underline: var(--color-accent-500);
+  
+  /* Code Blocks */
+  --code-bg: var(--color-secondary-100);
+  --code-text: var(--color-text-primary);
+  --code-border: var(--color-border-secondary);
+}
+
+
+/* =========================================
+   THEME UTILITY CLASSES
+   ========================================= */
+
+/* Button Components */
+.btn {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn:focus {
+  ring: 2px;
+  ring-offset: 2px;
+}
+
+.btn-primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-theme);
+}
+
+.btn-secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border: 1px solid var(--button-secondary-border);
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--button-secondary-hover);
+}
+
+/* Link Components */
+.link {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--link-hover);
+}
+
+.link-underlined {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.link-underlined::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--link-underline);
+  transition: width 0.3s ease;
+}
+
+.link-underlined:hover::after {
+  width: 100%;
+}
+
+/* Text Color Utilities */
+.text-theme-primary {
+  color: var(--color-text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-theme-muted {
+  color: var(--color-text-muted);
+}
+
+.text-theme-inverse {
+  color: var(--color-text-inverse);
+}
+
+/* Background Color Utilities */
+.bg-theme-background {
+  background-color: var(--color-background);
+}
+
+.bg-theme-surface {
+  background-color: var(--color-surface);
+}
+
+/* Border Color Utilities */
+.border-theme-primary {
+  border-color: var(--color-border-primary);
+}
+
+.border-theme-secondary {
+  border-color: var(--color-border-secondary);
+}
+
 /* Base Style for Markdown Content */
+/* =========================================
+   ARTICLE & CONTENT STYLING
+   ========================================= */
+
 article h1 {
-    @apply text-6xl font-semibold mt-12 mb-6 leading-14;
+    @apply text-6xl font-semibold mt-12 mb-6;
+    color: var(--color-text-primary);
+    line-height: var(--leading-6xl);
 }
 
 article h1:first-child {
-    @apply text-6xl
+    @apply text-6xl mt-0;
 }
 
 article h2 {
-    @apply text-4xl font-semibold mt-12 mb-4 leading-12;
+    @apply text-4xl font-semibold mt-12 mb-4;
+    color: var(--color-text-primary);
+    line-height: var(--leading-4xl);
 }
 
 article h3 {
-    @apply text-2xl font-semibold mt-6 mb-4 leading-10;
+    @apply text-2xl font-semibold mt-6 mb-4;
+    color: var(--color-text-primary);
+    line-height: var(--leading-2xl);
 }
 
 article h4 {
-    @apply text-xl font-semibold mt-6 mb-4 leading-10;
+    @apply text-xl font-semibold mt-6 mb-4;
+    color: var(--color-text-primary);
+    line-height: var(--leading-xl);
 }
 
 article h5 {
-    @apply text-lg font-semibold mt-6 mb-4 leading-10;
+    @apply text-lg font-semibold mt-6 mb-4;
+    color: var(--color-text-primary);
+    line-height: var(--leading-lg);
 }
 
 article h6 {
-    @apply text-lg font-semibold mt-6 mb-4 leading-10;
+    @apply text-lg font-semibold mt-6 mb-4;
+    color: var(--color-text-primary);
+    line-height: var(--leading-lg);
 }
 
 article p {
-    @apply text-lg font-normal my-6 leading-8 text-gray-600;
+    @apply text-lg font-normal my-6;
+    color: var(--color-text-secondary);
+    line-height: var(--leading-lg);
 }
 
 article address p {
@@ -39,26 +324,33 @@ article address p {
 }
 
 article blockquote {
-    @apply p-2 my-6 border-s-2 border-blue-500 bg-gray-50;
+    @apply p-4 my-6 border-l-4 rounded-sm;
+    border-color: var(--color-primary-500);
+    background-color: var(--color-surface);
 }
 
 article blockquote p {
-    @apply text-xl italic font-medium text-gray-900 my-1;
+    @apply text-xl italic font-medium my-1;
+    color: var(--color-text-primary);
 }
 
 article ul {
-    @apply mx-12 my-4 space-y-1 text-gray-900 list-disc;
+    @apply mx-12 my-4 space-y-1 list-disc;
+    color: var(--color-text-primary);
 }
+
 article ul li {
     @apply ml-2;
 }
 
 article ul li ul {
-    @apply mx-6 my-1.5 space-y-1 text-gray-700 list-disc;
+    @apply mx-6 my-1.5 space-y-1 list-disc;
+    color: var(--color-text-secondary);
 }
 
 article ol {
-    @apply mx-8 my-4 space-y-1 text-gray-900 list-decimal;
+    @apply mx-8 my-4 space-y-1 list-decimal;
+    color: var(--color-text-primary);
 }
 
 article ol li {
@@ -66,12 +358,16 @@ article ol li {
 }
 
 article ol li ol {
-    @apply mx-6 my-1.5 space-y-1 text-gray-700 list-decimal;
+    @apply mx-6 my-1.5 space-y-1 list-decimal;
+    color: var(--color-text-secondary);
 }
 
 article code {
   /* Inline code style */
-  @apply rounded-sm p-1.5 bg-gray-200 text-base font-mono text-sm drop-shadow-xs;
+  @apply rounded-sm p-1.5 text-base font-mono text-sm;
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  box-shadow: var(--shadow-theme-sm);
 }
 
 article code > pre {
@@ -79,37 +375,49 @@ article code > pre {
 }
 
 article pre {
-  @apply overflow-auto p-4 my-5 rounded-lg drop-shadow-lg;
+  @apply overflow-auto p-4 my-5 rounded-lg;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  box-shadow: var(--shadow-theme);
 }
 
 article pre > code {
   /* Disable inline code style */
   @apply rounded-none p-0 bg-transparent font-mono;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 
 article table {
-  @apply w-full text-sm text-left rtl:text-right text-gray-500;
+  @apply w-full text-sm text-left rtl:text-right;
+  color: var(--color-text-secondary);
 }
 
 article table thead {
-  @apply ltr:text-left rtl:text-right text-xs text-gray-900 uppercase bg-gray-50;
+  @apply ltr:text-left rtl:text-right text-xs uppercase;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
 }
+
 article table tbody {
-  @apply  bg-white border-b border-gray-100;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border-primary);
 }
 
 article tr th {
-  @apply font-medium bg-gray-50 px-6 py-3;
+  @apply font-medium px-6 py-3;
+  background-color: var(--color-surface);
 }
 
 article tr th,
 article tr td {
-  @apply border-b border-gray-100 px-4 py-2;
+  @apply px-4 py-2;
+  border-bottom: 1px solid var(--color-border-primary);
 }
 
 article table tbody tr td:first-child {
-  @apply text-gray-900;
+  color: var(--color-text-primary);
 }
 
 article figure {
@@ -121,7 +429,8 @@ article figure img {
 }
 
 article figure figcaption {
-    @apply text-gray-500 text-xs italic;
+    @apply text-xs italic;
+    color: var(--color-text-muted);
 }
 
 article iframe {
@@ -130,6 +439,11 @@ article iframe {
 
 article audio {
     @apply w-full;
+}
+
+code span {
+    @apply text-sm;
+    color: var(--color-text-inverse);
 }
 
 /* Custom CSS Styles for Navigation Bar */
@@ -154,7 +468,7 @@ html {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #171717;
+    background-color: var(--color-text-primary);
     transition: width 0.3s ease;
 }
 
@@ -180,9 +494,9 @@ html {
 }
 
 .contact-btn:hover {
-    background-color: #2d2d2d;
+    background-color: var(--button-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-theme);
 }
 
 /* Mobile sidebar styles */
