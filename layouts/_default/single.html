@@ -1,0 +1,43 @@
+{{ define "main" }}
+    <section class="bg-white m-12 md:mt-40">
+        <div class="px-4 mx-auto max-w-screen-lg md:px-0">
+            {{ if eq .Type "posts" }}
+                <h2 class="text-7xl font-extrabold leading-tight tracking-tight text-[#171717]"> {{ .Page.LinkTitle }} </h2>
+                {{ range (.GetTerms "categories") }}
+                    <p class="text-gray-700 font-light"> {{ .Name }} </p>
+                {{ end }} 
+            {{ end }}
+            {{ if eq .Type "post" }}
+            <p class="mb-5 font-light text-gray-900"> {{ .Params.description }} </p>
+            {{ end }}
+        </div>
+        <article class="mt-1 mb-8 mx-8 md:max-w-screen-md md:mx-auto">
+            {{ .Content }}
+        </article>
+    </section>
+    {{ $related := .Site.RegularPages.Related . | first 4 }}
+        {{ with $related }}
+            <aside aria-label="Related articles" class="py-8 lg:py-16 ">
+                <div class="px-4 mx-auto max-w-screen-xl">
+                    <h2 class="mb-8 text-6xl font-bold text-gray-[#171717]">Related articles</h2>
+                    <div class="grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
+                        {{ range . }}
+                            <div class="max-w-xs">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs">
+                                        {{ range (.GetTerms "categories") }}
+                                            <p class="text-[#171717]"> {{ .Date | time.Format ":date_medium" }} </p>
+                                        {{ end }}                   
+                                    </span>
+                                </div>
+                                 <h2 class="mt-0 text-2xl font-semibold tracking-tight text-[#171717]">
+                                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                </h2>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </aside>
+    {{ end }}
+{{partial "contact-banner.html" .}}
+{{ end }}

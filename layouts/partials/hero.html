@@ -1,0 +1,24 @@
+<section id="hero-section" class="hero-section parallax-layer-bg relative bg-[#F7F7F6] mx-auto fullscreen text-left" data-parallax-speed="0.99">
+    {{ with .Site.Params.author }}
+    <div class="parallax-layer-heading px-4 pt-24 text-[#171717] lg:px-24 lg:w-1/2" data-parallax-speed="0.95">
+        <h2 class="mb-2 text-7xl font-bold tracking-tight leading-none text-gray-900">{{ .name | markdownify }}</h2>
+        <p class=" text-xl font-light text-gray-500">{{ .description | markdownify }}</p>
+        <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
+    </div>
+    {{ end }}
+    {{ with .Params.banner }}
+    <div class="flex flex-col justity-between  px-4 mb-24 text-[#171717] lg:px-24 lg:flex-row lg:items-stretch">
+        <div class="parallax-layer-subheading py-2 text-left  lg:w-2/3" data-parallax-speed="0.94" style="top: 45%;">
+            <h1 class=" hero-subheading mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-4xl ">{{ .title | markdownify }}</h1>
+            <p class="text-lg font-normal text-gray-500 lg:text-xl">{{ .content | markdownify }}</p>
+        </div>
+            {{ with .button }}
+            {{ if .enable }}
+                <div class="  mt-4 parallax-layer-subheading lg:ml-24 lg:self-end lg:mb-4" data-parallax-speed="0.92" style="top: 45%;">
+                    <a href="{{ .link }}" class="cursor-pointer py-3 px-5 text-md font-light text-white text-center rounded-lg bg-[#171717] sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300">{{ .label | markdownify }}</a>
+                </div>
+            {{ end }}
+            {{ end }}
+    </div>
+    {{ end }}
+</section>

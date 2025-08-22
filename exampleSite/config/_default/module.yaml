@@ -1,0 +1,37 @@
+hugoVersion:
+    extended: false
+    min: "0.116.0"
+mounts:
+  - disableWatch: false
+    excludeFiles: null
+    includeFiles: null
+    lang: "en"
+    source: content/en
+    target: content
+  - disableWatch: false
+    excludeFiles: null
+    includeFiles: null
+    lang: "es"
+    source: content/es
+    target: content
+  - disableWatch: false
+    source: data
+    target: data
+  - disableWatch: false
+    source: layouts
+    target: layouts
+  - disableWatch: false
+    source: i18n
+    target: i18n
+  - disableWatch: false
+    source: archetypes
+    target: archetypes
+  - disableWatch: false
+    source: assets
+    target: assets
+  - disableWatch: false
+    source: static
+    target: static
+
+security:
+  enableInlineShortcodes: false

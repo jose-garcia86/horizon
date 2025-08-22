@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section id = "writing-section" class="bg-white m-12 md:mt-40">
+    <div class="mx-auto max-w-screen-lg">
+        <h2 class=" text-7xl font-extrabold leading-tight tracking-tight text-[#171717]"> {{ .Page.LinkTitle }} </h2>
+        <p>{{ T "see_all" }} <a href="/{{ .Data.Plural }}" class="text-gray-700 font-bold">{{ .Data.Plural }}</a>.</p>
+    </div>
+    <div class="grid gap-1 py-8 mx-auto max-w-screen-md">      
+        {{ range where .Data.Pages "Type" "posts" }}
+            <div class="grid grid-cols-1 mb-12 py-6 ">
+                <div class="flex justify-between items-center mb-1">
+                    <span class=" text-xs uppercase font-light inline-flex items-center">
+                        {{ range (.GetTerms "categories") }}
+                            <p class="text-[#171717]"> {{ .Date | time.Format ":date_medium" }} </p>
+                        {{ end }}                   
+                    </span>
+                </div>
+                <h2 class="my-4 text-4xl font-semibold tracking-tight text-[#171717]">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+                <p class="mb-5 text-xl font-light text-gray-900"> {{ .Params.description }} </p>
+                <div class=" text-[#171717] hover:text-gray-600 transition-colors duration-300">
+                    <a href="{{ .Permalink }}" class="nav-link inline-flex items-center font-medium text-[#171717] transition-colors duration-200 active ">
+                        {{ T "read_more"}}
+                        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        {{ end}}
+    </div>
+    <div class="flex justify-center">
+        {{ partial "pagination.html" . }}
+    </div>
+</section>
+{{ end }}

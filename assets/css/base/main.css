@@ -1,0 +1,340 @@
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* Base Style for Markdown Content */
+article h1 {
+    @apply text-6xl font-semibold mt-12 mb-6 leading-14;
+}
+
+article h1:first-child {
+    @apply text-6xl
+}
+
+article h2 {
+    @apply text-4xl font-semibold mt-12 mb-4 leading-12;
+}
+
+article h3 {
+    @apply text-2xl font-semibold mt-6 mb-4 leading-10;
+}
+
+article h4 {
+    @apply text-xl font-semibold mt-6 mb-4 leading-10;
+}
+
+article h5 {
+    @apply text-lg font-semibold mt-6 mb-4 leading-10;
+}
+
+article h6 {
+    @apply text-lg font-semibold mt-6 mb-4 leading-10;
+}
+
+article p {
+    @apply text-lg font-normal my-6 leading-8 text-gray-600;
+}
+
+article address p {
+    @apply my-0;
+}
+
+article blockquote {
+    @apply p-2 my-6 border-s-2 border-blue-500 bg-gray-50;
+}
+
+article blockquote p {
+    @apply text-xl italic font-medium text-gray-900 my-1;
+}
+
+article ul {
+    @apply mx-12 my-4 space-y-1 text-gray-900 list-disc;
+}
+article ul li {
+    @apply ml-2;
+}
+
+article ul li ul {
+    @apply mx-6 my-1.5 space-y-1 text-gray-700 list-disc;
+}
+
+article ol {
+    @apply mx-8 my-4 space-y-1 text-gray-900 list-decimal;
+}
+
+article ol li {
+    @apply ml-2;
+}
+
+article ol li ol {
+    @apply mx-6 my-1.5 space-y-1 text-gray-700 list-decimal;
+}
+
+article code {
+  /* Inline code style */
+  @apply rounded-sm p-1.5 bg-gray-200 text-base font-mono text-sm drop-shadow-xs;
+}
+
+article code > pre {
+  @apply font-mono;
+}
+
+article pre {
+  @apply overflow-auto p-4 my-5 rounded-lg drop-shadow-lg;
+}
+
+article pre > code {
+  /* Disable inline code style */
+  @apply rounded-none p-0 bg-transparent font-mono;
+}
+
+
+article table {
+  @apply w-full text-sm text-left rtl:text-right text-gray-500;
+}
+
+article table thead {
+  @apply ltr:text-left rtl:text-right text-xs text-gray-900 uppercase bg-gray-50;
+}
+article table tbody {
+  @apply  bg-white border-b border-gray-100;
+}
+
+article tr th {
+  @apply font-medium bg-gray-50 px-6 py-3;
+}
+
+article tr th,
+article tr td {
+  @apply border-b border-gray-100 px-4 py-2;
+}
+
+article table tbody tr td:first-child {
+  @apply text-gray-900;
+}
+
+article figure {
+    @apply mx-auto;
+}
+
+article figure img {
+    @apply w-full;
+}
+
+article figure figcaption {
+    @apply text-gray-500 text-xs italic;
+}
+
+article iframe {
+    @apply mx-auto w-full h-full;
+}
+
+article audio {
+    @apply w-full;
+}
+
+/* Custom CSS Styles for Navigation Bar */
+
+/* Base styles for smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+//* Navigation bar styles */
+/* Navigation link hover effect */
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    padding-bottom: 2px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #171717;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Dropdown styles */
+.dropdown-container:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-container:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Contact button animation - simplified hover effect */
+.contact-btn {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #2d2d2d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile sidebar styles */
+#mobile-sidebar {
+    overflow-y: auto;
+}
+
+/* Mobile dropdown animation */
+.mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.mobile-dropdown-content.show {
+    max-height: 500px;
+}
+
+.mobile-dropdown.active .mobile-arrow {
+    transform: rotate(180deg);
+}
+
+/* Hamburger menu animation styles - Fixed X position */
+.hamburger-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.hamburger-icon path {
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger-icon.active .hamburger-top {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger-icon.active .hamburger-middle {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger-icon.active .hamburger-bottom {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Loading animation for nav items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-link {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Stagger animation delays */
+.nav-link:nth-child(1) { animation-delay: 0.1s; }
+.nav-link:nth-child(2) { animation-delay: 0.2s; }
+.nav-link:nth-child(3) { animation-delay: 0.3s; }
+.nav-link:nth-child(4) { animation-delay: 0.4s; }
+.nav-link:nth-child(5) { animation-delay: 0.5s; }
+
+/* Social media icon hover effect */
+.fab {
+    transition: transform 0.3s ease;
+}
+
+.fab:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Box shadow for navbar on scroll */
+nav.scrolled {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-link::after {
+        display: none;
+    }
+}
+
+/* Custom scrollbar for mobile sidebar */
+#mobile-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mobile-sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#mobile-sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#mobile-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Overlay fade animation */
+#overlay {
+    transition: opacity 0.3s ease;
+}
+
+#overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+
+/* Language selector custom styles */
+.dropdown-container .fa-globe {
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+.dropdown-container:hover .fa-globe {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+    nav {
+        font-size: 14px;
+    }
+    
+    .contact-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

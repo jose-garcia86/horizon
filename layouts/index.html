@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ partial "hero.html" . }}
+  {{ partial "featured.html" .}}
+  <div class="grid grid-cols-3 gap-1 max-w-screen-xl mx-auto">
+    <div class="col-span-2">
+      {{ partial "posts.html" .}}
+      <div class="flex justify-center mb-16 cursor-pointer">
+        {{ partial "pagination.html" . }}
+      </div>
+    </div>
+    <div class="col-span-1">
+      {{ partial "sidebar.html" . }}
+    </div>
+  </div>
+  {{partial "contact-banner.html" .}}
+{{ end }}

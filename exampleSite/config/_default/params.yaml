@@ -1,0 +1,19 @@
+# Site Parameters
+dateFormat: 'Jan 02, 2006'
+Copyright: 'Copyright© Luca Ferrari' # Change this to your copyright statement
+mainColor: "#035c8c" # Change this to your main color
+
+# Navigation Bar: Logo
+# To enable a logo, place an image in /static/images/
+navbar:
+    displayLogo: false
+    logoUrl: "/images/logo.svg"
+
+# Author Info: this information is used in /layouts/partials/footer.html
+author:
+    name: "Luca Ferrari"
+    email: "lucaferrari@xyz.me"
+    role: "Product Designer"
+    description: "Luca is a product design expert with over a decade of experience in creating user-friendly products."
+    displayImage: true
+    image: "/images/avatar.jpg"

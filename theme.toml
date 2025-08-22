@@ -1,0 +1,24 @@
+name = 'Horizon Theme'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'Horizon is a modern Hugo theme designed specifically for your personal Blog. It features a clean design with multilingual support. It comes with 20+ pre-designed pages, making it easy to create a comprehensive and feature-rich blog. Horizon is the perfect theme for sharing your writes, and connecting with employees.'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/jose-garcia86/horizon.git'
+
+# If you have a running demo of the theme
+demosite = 'https://owner.github.io/repo'
+
+# Taxonomy terms
+tags = ['blog', 'personal blog']
+features = ['blog', 'craft designed', 'features', 'multilingual']
+
+# If the theme has multiple authors
+authors = [
+  {name = 'Jose Garcia', homepage = 'josegarcia.dev'},
+]
+
+# If the theme has a single author
+[author]
+  name = 'Jose Garcia'
+  homepage = 'josegarcia.dev'

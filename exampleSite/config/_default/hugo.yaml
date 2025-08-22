@@ -1,0 +1,107 @@
+# Site Configuration
+baseURL: "https://example.org/"
+languageCode: "en"
+title: "Horizon Theme"
+
+theme: "horizon"
+themesDir: "../../"
+
+# Language Configuration
+#defaultContentLanguageInSubdir: false
+defaultContentLanguage: en
+languages:
+  en:
+    title: Horizon
+    languageCode: en-GB
+    contentDir: content/en
+    languageName: English
+    weight: 10
+    menu:
+      main:
+      - name: "Home"
+        url: "/"
+        weight: 10
+      - name: "Posts"
+        url: "/posts"
+        weight: 20
+      - name: "Design Essentials"
+        url: "categories/design-essentials"
+        parent: "Categories"
+        weight: 10
+      - name: "Design Assets"
+        url: "categories/desing-assets"
+        parent: "Categories"
+        weight: 20
+      - name: "Web Design"
+        url: "categories/web-design"
+        parent: "Categories"
+        weight: 30
+      - name: "About"
+        url: "/about"
+        weight: 30
+
+      footer:
+      - name: "Style Guide"
+        url: "/style-guide"
+        weight: 10
+      - name: "RSS"
+        url: "/index.xml"
+        weight: 20
+      - name: "Sitemap"
+        url: "/sitemap.xml"
+        weight: 30
+
+  es:
+    title: Horizon
+    languageCode: es-ES
+    contentDir: content/es
+    languageName: Spanish
+    weight: 20
+    menu:
+      main:
+      - name: "Inicio"
+        url: "/"
+        weight: 10
+      - name: "Posts"
+        url: "/posts"
+        weight: 20
+      - name: "Fundamentos de Diseño"
+        url: "categories/design-essentials"
+        parent: "Categories"
+        weight: 10
+      - name: "Recursos de Diseño"
+        url: "categories/desing-assets"
+        parent: "Categories"
+        weight: 20
+      - name: "Diseño Web"
+        url: "categories/web-design"
+        parent: "Categories"
+        weight: 30
+      - name: "Sobre mi"
+        url: "/about"
+        weight: 30
+
+      footer:
+      - name: "Style Guide"
+        url: "/style-guide"
+        weight: 10
+      - name: "RSS"
+        url: "/index.xml"
+        weight: 20
+      - name: "Sitemap"
+        url: "/sitemap.xml"
+        weight: 
+        
+# Configuration for Related Content
+related:
+  includeNewer: false
+  threshold: 80
+  toLower: false
+  indices:
+    - applyFilter: false
+      cardinalityThreshold: 0
+      name: 'categories'
+      pattern: ''
+      toLower: false
+      type: 'basic'
+      weight: 100
