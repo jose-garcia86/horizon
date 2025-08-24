@@ -21,8 +21,8 @@ languages:
       - name: "Home"
         url: "/"
         weight: 10
-      - name: "Posts"
-        url: "/posts"
+      - name: "Microposts"
+        url: "/microposts"
         weight: 20
       - name: "Design Essentials"
         url: "categories/design-essentials"
@@ -62,8 +62,8 @@ languages:
       - name: "Inicio"
         url: "/"
         weight: 10
-      - name: "Posts"
-        url: "/posts"
+      - name: "Microposts"
+        url: "/microposts"
         weight: 20
       - name: "Fundamentos de Diseño"
         url: "categories/design-essentials"

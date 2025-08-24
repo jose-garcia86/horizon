@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ $pages := where site.RegularPages "Type" "posts" }}
+{{ $paginator := .Paginate $pages.ByTitle 10 }}
+
+<section id = "writing-section" class="bg-theme-background md:m-16">
+    <div class="grid gap-1 py-8 px-4 mx-auto max-w-screen-lg ">     
+        <div class="flex flex-col mb-16 items-left">
+            {{ with .Site.GetPage "/microposts" }}
+                {{ if .Title }}
+                    <h2 class="my-2 text-7xl font-semibold tracking-tight text-theme-primary"> {{ .Title }}</h2>
+                    <h3 class="text-xl font-light tracking-tight text-theme-primary">{{ .Description }}</h3>
+                {{ end }}
+            {{ end }}
+        </div>
+        {{ range $section := where .Site.RegularPages "Section" "microposts" | first 1 }}
+            <div class="grid grid-cols-1 mb-12">
+                <div class="flex justify-between items-center mb-2">
+                    <span class=" text-xs uppercase font-light inline-flex items-center">
+                        <p class="text-theme-primary"> {{ .Date | time.Format ":date_medium" }} </p>
+                    </span>
+                </div>
+                <h2 class=" text-6xl font-semibold tracking-tight text-theme-primary">
+                    {{ .Title }}
+                </h2>
+                 <article class="text-xl font-light text-theme-primary">
+                    {{ .Content }}
+                </article>
+                
+            </div> 
+        {{ end }}
+    </div>
+    <div class="grid gap-1 mx-auto max-w-screen-md">      
+        {{range $section := where .Site.RegularPages "Section" "microposts" | after 1 | first 10}}
+            <div class="grid grid-cols-1 mb-12 ">
+                <div class="flex justify-between items-center mb-1">
+                    <span class=" text-xs uppercase font-light inline-flex items-center">
+                        <p class="text-theme-primary"> {{ .Date | time.Format ":date_medium" }} </p>             
+                    </span>
+                </div>
+                <h2 class="text-4xl font-semibold tracking-tight text-theme-primary">
+                   {{ .Title }}
+                </h2>
+                <article class="text-xl font-light text-theme-primary">
+                    {{ .Content }}
+                </article>
+
+            </div>
+        {{ end}}
+    </div>
+    <div class="flex justify-center">
+        {{ partial "pagination.html" . }}
+    </div>
+</section>
+{{ partial "contact-banner.html" . }}
+{{ end }}

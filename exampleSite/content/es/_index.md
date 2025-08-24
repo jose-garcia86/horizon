@@ -6,7 +6,7 @@ banner:
   button:
     enable: true
     label: "Más sobre mi"
-    link: "/about"
+    link: "about"
 
 # Work Experience
 experience:
